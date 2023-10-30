@@ -40,29 +40,44 @@ void PrintVect( float vect[N], int from, int numel ){
 void PrintRow( float mat[N][N], int row, int from, int numel ){
 	int i;
 	for(i=from; i < from+numel; i++){
-		printf("%f",mat[row][i]);
+		printf("%f", mat[row][i]);
 
 	}
 }
 
+void MultEscalar( float vect[N], float vectres[N], float alfa ){
+        int i;
+        for(i=0; i < N; i++){
+		vectres[i] = vect[i] * alfa;
+                printf("%f", vectres[i]);
+        }
+}
+
 int main(int argc, char** argv){
         InitData();
-        int numel,from,row;
+        int numel,from,row,vect;
 	printf("Nombre d'elements: ");
         scanf("%d", &numel);
 	printf("Posició Vector d'inici: ");
         scanf("%d", &from);
 	printf("Quina fila: ");
 	scanf("%d", &row);
-        int vect;
 	printf("Quin vecotor? ");
         scanf("%d", &vect);
 
-	//float* vector[3] = {V1, V2, V3};
+	float alfa;
+	printf("Multiplicació: ");
+        scanf("%e", &alfa);
 
-	PrintVect(V1, from, numel );
-	
-	//PrintRow( float mat[row][i], int row, int from, int numel);
+	float* vector[3] = {V1, V2, V3};
+	float* vectres;
+
+//	PrintVect(vector[vect-1], from, numel );
+//	printf("\n");
+//	PrintRow(Mat, row, from, numel);
+	//printf("\n");
+	MultEscalar(vector[vect-1], vectres, alfa);
+	printf("\n");
 		
 	return 0;
 }
