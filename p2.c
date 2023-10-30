@@ -53,6 +53,16 @@ void MultEscalar( float vect[N], float vectres[N], float alfa ){
         }
 }
 
+float Scalar( float vect1[N], float vect2[N] ){
+        int i;
+	float res;
+        for(i=0; i < N; i++){
+		res = vect1[i] * vect2[i];
+		printf("%f", res);
+	}
+	return res;
+}	
+
 int main(int argc, char** argv){
         InitData();
         int numel,from,row,vect;
@@ -67,7 +77,7 @@ int main(int argc, char** argv){
 
 	float alfa;
 	printf("Multiplicació: ");
-        scanf("%e", &alfa);
+        scanf("%f", &alfa);
 
 	float* vector[3] = {V1, V2, V3};
 	float* vectres;
@@ -75,9 +85,10 @@ int main(int argc, char** argv){
 //	PrintVect(vector[vect-1], from, numel );
 //	printf("\n");
 //	PrintRow(Mat, row, from, numel);
-	//printf("\n");
-	MultEscalar(vector[vect-1], vectres, alfa);
-	printf("\n");
+//	printf("\n");
+//	MultEscalar(vector[vect-1], V1 , alfa);
+//	printf("\n");
+	Scalar(V1,V2);
 		
 	return 0;
 }
