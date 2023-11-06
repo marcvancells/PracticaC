@@ -159,8 +159,24 @@ float NormFrobenius( float M[N][N] ) {
     	return x;
 }
 
-int DiagonalDom( float M[N][N] ){
+int DiagonalDom( float M[N][N] ) {
+    	int i, j;
+    	for(i = 0; i < N; i++) {
+        	float suma = 0;
+        	for(j = 0; j < N; j++) {
+            	if(i != j) {
+                	suma += fabs(M[i][j]);
+            	}	
+        	}
+        	if(fabs(M[i][i]) < suma) {
+			printf("No és diagonal dominant");
+            		return 0; 
+        	}
+    		}
+		printf("És diagonal dominant");
+		return 1;
 
+}
 
 int main(int argc, char** argv){
         InitData();
@@ -204,7 +220,8 @@ int main(int argc, char** argv){
 //	printf("\n")
 //	Onenorm(matriu[mat-1]);
 //	printf("\n")
-	NormFrobenius(Mat);
+//	NormFrobenius(Mat);
+	DiagonalDom(MatDD);
 
 
 }
