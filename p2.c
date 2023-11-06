@@ -56,24 +56,92 @@ void MultEscalar( float vect[N], float vectres[N], float alfa ){
 float Scalar( float vect1[N], float vect2[N] ){
         int i;
 	float res;
+	res = 0;
         for(i=0; i < N; i++){
-		res = vect1[i] * vect2[i];
-		printf("%f", res);
+		res += vect1[i] * vect2[i];
 	}
+	printf("%f", res);
 	return res;
-}	
+}
+
+float Magnitude( float vect[N] ) {
+        int i;
+        float res,x;
+        res = 0;
+        for(i=0; i < N; i++){
+                res += vect[i]*vect[i];
+        }
+	x = sqrt(res);
+        printf("%f", x);
+        return x;
+}
+
+int Ortogonal( float vect1[N], float vect2[N] ){
+        int i;
+        float res;
+        res = 0;
+        for(i=0; i < N; i++){
+                res += vect1[i] * vect2[i];
+        }
+        if(res == 0){
+		printf("Vect1 i Vect2 són ortogonals");
+		return 1;
+	}else{
+		printf("Vect1 i Vect2 no són ortogonals");
+		return 0;
+	}
+}
+
+void Projection( float vect1[N], float vect2[N], float vectres[N] ){
+        int i;
+        float producte,res,numero,x;
+        producte = 0;
+        for(i=0; i < N; i++){
+                producte += vect1[i]*vect2[i];
+        }
+	for(i=0; i < N; i++){
+                res += vect2[i]*vect2[i];
+        }
+	x = sqrt(res);
+	numero = producte / x;
+        int j;
+        for(j=0; j < N; j++){
+                vectres[j] = vect2[j] * numero;
+		printf("%f",vectres[j]);
+        }
+}
+
+float Infininorm( float M[N][N] ){
+	int i,j;
+	float maxim,suma;
+	maxim = 0;
+	for(i=0; i<N; i++){
+		suma=0;
+		for(j=0;j<N;j++){
+			suma += fabs(M[i][j]);
+		}
+	if(suma>maxim){
+		maxim = suma;
+		}
+	}
+	printf("%f",maxim);
+	return maxim;
+}
+
 
 int main(int argc, char** argv){
         InitData();
-        int numel,from,row,vect;
+        int numel,from,row,vect,vect2;
 	printf("Nombre d'elements: ");
         scanf("%d", &numel);
 	printf("Posició Vector d'inici: ");
         scanf("%d", &from);
 	printf("Quina fila: ");
 	scanf("%d", &row);
-	printf("Quin vecotor? ");
+	printf("Primer Vector: ");
         scanf("%d", &vect);
+	printf("Segon Vector: ");
+	scanf("%d",&vect2);
 
 	float alfa;
 	printf("Multiplicació: ");
@@ -84,11 +152,16 @@ int main(int argc, char** argv){
 
 //	PrintVect(vector[vect-1], from, numel );
 //	printf("\n");
-//	PrintRow(Mat, row, from, numel);
+//	PrintRow(Mat, row, froint Ortogonal( float vect1[N], float vect2[N] )m, numel);
 //	printf("\n");
 //	MultEscalar(vector[vect-1], V1 , alfa);
 //	printf("\n");
-	Scalar(V1,V2);
-		
-	return 0;
+//	Scalar(vector[vect-1],vector[vect2-1]);
+//	printf("\n");
+//	Magnitude(vector[vect-1]);
+//	printf("\n");
+//	Ortogonal(vector[vect-1],vector[vect2-1]);
+//	printf("\n")
+//	Projection(vector[vect-1],vector[vect2-1],V1);
+	Infininorm(Mat);
 }
