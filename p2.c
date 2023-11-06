@@ -128,10 +128,43 @@ float Infininorm( float M[N][N] ){
 	return maxim;
 }
 
+float Onenorm( float M[N][N] ){
+        int i,j;
+        float maxim,suma;
+        maxim = 0;
+        for(i=0; i<N; i++){
+                suma=0;
+                for(j=0;j<N;j++){
+                        suma += fabs(M[j][i]);
+                }
+        if(suma>maxim){
+                maxim = suma;
+                }
+        }
+        printf("%f",maxim);
+        return maxim;
+}
+
+float NormFrobenius( float M[N][N] ) {
+	int i,j;
+	float x,suma;
+	suma = 0;
+    	for(i = 0; i < N; i++) {
+        	for(j = 0; j < N; j++) {
+            	suma += M[i][j] * M[i][j];
+        	}
+    	}
+    	x = sqrt(suma);
+    	printf("%f",x);
+    	return x;
+}
+
+int DiagonalDom( float M[N][N] ){
+
 
 int main(int argc, char** argv){
         InitData();
-        int numel,from,row,vect,vect2;
+        int numel,from,row,vect,vect2,mat;
 	printf("Nombre d'elements: ");
         scanf("%d", &numel);
 	printf("Posició Vector d'inici: ");
@@ -142,6 +175,8 @@ int main(int argc, char** argv){
         scanf("%d", &vect);
 	printf("Segon Vector: ");
 	scanf("%d",&vect2);
+	printf("Quina matriu? (Mat = 1, MatDD = 2) ");
+	scanf("%d", &mat);
 
 	float alfa;
 	printf("Multiplicació: ");
@@ -149,6 +184,7 @@ int main(int argc, char** argv){
 
 	float* vector[3] = {V1, V2, V3};
 	float* vectres;
+//	float* matriu[2] = {Mat, MatDD};
 
 //	PrintVect(vector[vect-1], from, numel );
 //	printf("\n");
@@ -163,5 +199,12 @@ int main(int argc, char** argv){
 //	Ortogonal(vector[vect-1],vector[vect2-1]);
 //	printf("\n")
 //	Projection(vector[vect-1],vector[vect2-1],V1);
-	Infininorm(Mat);
+//	printf("\n")
+//	Infininorm(matriu[mat-1]);
+//	printf("\n")
+//	Onenorm(matriu[mat-1]);
+//	printf("\n")
+	NormFrobenius(Mat);
+
+
 }
