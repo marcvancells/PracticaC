@@ -175,8 +175,10 @@ int DiagonalDom( float M[N][N] ) {
     		}
 		printf("És diagonal dominant");
 		return 1;
-
 }
+
+//int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter ){
+
 
 int main(int argc, char** argv){
         InitData();
@@ -200,11 +202,18 @@ int main(int argc, char** argv){
 
 	float* vector[3] = {V1, V2, V3};
 	float* vectres;
-//	float* matriu[2] = {Mat, MatDD};
+	
+	float(*M)[512];
+	if(mat==1){
+		M = Mat;
+	}else if(mat==2){
+		M = MatDD;
+	}
 
+//	printf("\n");
 //	PrintVect(vector[vect-1], from, numel );
 //	printf("\n");
-//	PrintRow(Mat, row, froint Ortogonal( float vect1[N], float vect2[N] )m, numel);
+//	PrintRow(M, row, from, numel);
 //	printf("\n");
 //	MultEscalar(vector[vect-1], V1 , alfa);
 //	printf("\n");
@@ -213,15 +222,17 @@ int main(int argc, char** argv){
 //	Magnitude(vector[vect-1]);
 //	printf("\n");
 //	Ortogonal(vector[vect-1],vector[vect2-1]);
-//	printf("\n")
+//	printf("\n");
 //	Projection(vector[vect-1],vector[vect2-1],V1);
-//	printf("\n")
-//	Infininorm(matriu[mat-1]);
-//	printf("\n")
-//	Onenorm(matriu[mat-1]);
-//	printf("\n")
-//	NormFrobenius(Mat);
-	DiagonalDom(MatDD);
+//	printf("\n");
+//	Infininorm(M);
+//	printf("\n");
+//	Onenorm(M);
+//	printf("\n");
+//	NormFrobenius(M);
+//	printf("\n");
+//	DiagonalDom(M);
+//	printf("\n");
 
 
 }
