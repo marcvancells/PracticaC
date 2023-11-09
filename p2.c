@@ -177,12 +177,42 @@ int DiagonalDom( float M[N][N] ) {
 		return 1;
 }
 
-//int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter ){
+int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter ){
+	bool a = true;
+	int b,c;
+	float x[N];
+	for(b = 0; b < N; b++){
+		float suma = 0;
+		for (c = 0; c < N;  c++) {
+			if(b != c) {
+				suma +=fabs(M[b][b]);
+			}
+		}
+		if(fabs(M[b][b]) < suma) {
+			a = false;
+			return 0;
+		}
+ 	}
+	if (a) {	
+		for (unsigned k = 0; k < iter; k++) {
+			for (int i = 0; i < N; i++) {
+				x[i] = vect[i];
+				for (int j = 0; j < N; j++) {
+					if (i != j) {
+						x[i] -= M[i][j] * vect[j];
+					}
+				}
+				x[i] /= M[i][i];		
+			}
+		}
+	return 1;
+	}
+} 
 
 
 int main(int argc, char** argv){
         InitData();
-        int numel,from,row,vect,vect2,mat;
+        int numel,from,row,vect,vect2,mat,iteracio;
 	printf("Nombre d'elements: ");
         scanf("%d", &numel);
 	printf("Posició Vector d'inici: ");
@@ -195,6 +225,9 @@ int main(int argc, char** argv){
 	scanf("%d",&vect2);
 	printf("Quina matriu? (Mat = 1, MatDD = 2) ");
 	scanf("%d", &mat);
+	printf("Iteracions que vols: ");
+	scanf("%d", &iteracio);
+
 
 	float alfa;
 	printf("Multiplicació: ");
@@ -231,8 +264,10 @@ int main(int argc, char** argv){
 //	printf("\n");
 //	NormFrobenius(M);
 //	printf("\n");
-//	DiagonalDom(M);
-//	printf("\n");
+	DiagonalDom(M);
+	printf("\n");
+	Jacobi(M, vector[vect-1],V1,iteracio);
+
 
 
 }
