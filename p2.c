@@ -178,22 +178,11 @@ int DiagonalDom( float M[N][N] ) {
 }
 
 int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter ){
-	bool a = true;
-	int b,c;
 	float x[N];
-	for(b = 0; b < N; b++){
-		float suma = 0;
-		for (c = 0; c < N;  c++) {
-			if(b != c) {
-				suma +=fabs(M[b][b]);
-			}
-		}
-		if(fabs(M[b][b]) < suma) {
-			a = false;
-			return 0;
-		}
+	if(DiagonalDom(M)){
+		return 0;
  	}
-	if (a) {	
+	else{	
 		for (unsigned k = 0; k < iter; k++) {
 			for (int i = 0; i < N; i++) {
 				x[i] = vect[i];
@@ -202,7 +191,8 @@ int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter ){
 						x[i] -= M[i][j] * vect[j];
 					}
 				}
-				x[i] /= M[i][i];		
+				x[i] /= M[i][i];
+				printf("%f",x[i]);		
 			}
 		}
 	return 1;
@@ -267,7 +257,7 @@ int main(int argc, char** argv){
 	DiagonalDom(M);
 	printf("\n");
 	Jacobi(M, vector[vect-1],V1,iteracio);
-
+	printf("\n");
 
 
 }
