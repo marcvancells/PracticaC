@@ -169,36 +169,31 @@ int DiagonalDom( float M[N][N] ) {
             	}	
         	}
         	if(fabs(M[i][i]) < suma) {
-			printf("No és diagonal dominant");
             		return 0; 
         	}
     		}
-		printf("És diagonal dominant");
 		return 1;
 }
 
 int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned iter ){
-	float x[N];
-	if(DiagonalDom(M)){
+	float x[N], res;
+	if(!DiagonalDom(M)){
 		return 0;
- 	}
-	else{	
-		for (unsigned k = 0; k < iter; k++) {
-			for (int i = 0; i < N; i++) {
-				x[i] = vect[i];
-				for (int j = 0; j < N; j++) {
-					if (i != j) {
-						x[i] -= M[i][j] * vect[j];
-					}
+ 	}	
+	for (unsigned k = 0; k < iter; k++) {
+		for (int i = 0; i < N; i++) {
+			x[i] = vect[i];
+			for (int j = 0; j < N; j++) {
+				if (i != j) {
+					x[i] -= M[i][j] * vect[j];
 				}
-				x[i] /= M[i][i];
-				printf("%f",x[i]);		
-			}
-		}
-	return 1;
+			}	
+			x[i] /= M[i][i];
+			vectres[i]=x[i];	
+		}	
 	}
+	return 1;
 } 
-
 
 int main(int argc, char** argv){
         InitData();
@@ -254,10 +249,20 @@ int main(int argc, char** argv){
 //	printf("\n");
 //	NormFrobenius(M);
 //	printf("\n");
-	DiagonalDom(M);
+//	DiagonalDom(M);
+//	if(DiagonalDom == 0){
+//		printf("La diagonal no és dominant");
+//	}
+//	else{
+//		printf("La diagonal és dominant");
+//	}
+//	printf("\n");
+	Jacobi(M, vector[vect-1],V4,iteracio);
+	if(Jacobi){
+		PrintVect(V4,0,10);
+	}
 	printf("\n");
-	Jacobi(M, vector[vect-1],V1,iteracio);
-	printf("\n");
+
 
 
 }
