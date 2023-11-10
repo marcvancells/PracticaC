@@ -228,35 +228,35 @@ int main(int argc, char** argv){
 		M = MatDD;
 	}
 
-//	printf("\n");
-//	PrintVect(vector[vect-1], from, numel );
-//	printf("\n");
-//	PrintRow(M, row, from, numel);
-//	printf("\n");
-//	MultEscalar(vector[vect-1], V1 , alfa);
-//	printf("\n");
-//	Scalar(vector[vect-1],vector[vect2-1]);
-//	printf("\n");
-//	Magnitude(vector[vect-1]);
-//	printf("\n");
-//	Ortogonal(vector[vect-1],vector[vect2-1]);
-//	printf("\n");
-//	Projection(vector[vect-1],vector[vect2-1],V1);
-//	printf("\n");
-//	Infininorm(M);
-//	printf("\n");
-//	Onenorm(M);
-//	printf("\n");
-//	NormFrobenius(M);
-//	printf("\n");
-//	DiagonalDom(M);
-//	if(DiagonalDom == 0){
-//		printf("La diagonal no és dominant");
-//	}
-//	else{
-//		printf("La diagonal és dominant");
-//	}
-//	printf("\n");
+	printf("\n");
+	PrintVect(vector[vect-1], from, numel );
+	printf("\n");
+	PrintRow(M, row, from, numel);
+	printf("\n");
+	MultEscalar(vector[vect-1], V1 , alfa);
+	printf("\n");
+	Scalar(vector[vect-1],vector[vect2-1]);
+	printf("\n");
+	Magnitude(vector[vect-1]);
+	printf("\n");
+	Ortogonal(vector[vect-1],vector[vect2-1]);
+	printf("\n");
+	Projection(vector[vect-1],vector[vect2-1],V1);
+	printf("\n");
+	Infininorm(M);
+	printf("\n");
+	Onenorm(M);
+	printf("\n");
+	NormFrobenius(M);
+	printf("\n");
+	DiagonalDom(M);
+	if(DiagonalDom == 0){
+		printf("La diagonal no és dominant");
+	}
+	else{
+		printf("La diagonal és dominant");
+	}
+	printf("\n");
 	Jacobi(M, vector[vect-1],V4,iteracio);
 	if(Jacobi){
 		PrintVect(V4,0,10);
